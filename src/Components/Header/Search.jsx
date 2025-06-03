@@ -15,17 +15,18 @@ export default function Search() {
   const [showSearch, setShowSearch] = useState(false);
 
   const doSearch = useDebounce((searchTerm) => {
+    setSearchLoading(false);
     setSearchValue(searchTerm);
   }, 500);
 
   function handleChange(e) {
+    setSearchLoading(true);
     e.preventDefault();
     setFormValue(e.target.value);
     doSearch(e.target.value);
   }
 
   useEffect(() => {
-    console.log("calling use Effect");
     setSearchLoading(true);
     async function fetchSearchData() {
       try {
@@ -37,7 +38,7 @@ export default function Search() {
         console.log(response);
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+
           setSearchResult([...data]);
         }
       } catch (e) {
