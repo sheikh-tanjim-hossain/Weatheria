@@ -102,11 +102,6 @@ export default function Search() {
                         latitude: item.lat,
                         longitude: item.lon,
                       });
-                      console.log({
-                        location: item.name,
-                        latitude: item.lat,
-                        longitude: item.lon,
-                      });
                     }}
                   >
                     <h2 className="text-lg ">{item.name}</h2>
