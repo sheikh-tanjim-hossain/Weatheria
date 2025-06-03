@@ -35,7 +35,6 @@ export default function Search() {
             import.meta.env.VITE_WEATHER_API_KEY
           }`
         );
-        console.log(response);
         if (response.ok) {
           const data = await response.json();
 
