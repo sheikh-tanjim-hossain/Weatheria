@@ -28,16 +28,20 @@ export default function Search() {
     console.log("calling use Effect");
     setSearchLoading(true);
     async function fetchSearchData() {
-      const response = await fetch(
-        `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${
-          import.meta.env.VITE_WEATHER_API_KEY
-        }`
-      );
-      console.log(response);
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setSearchResult([...data]);
+      try {
+        const response = await fetch(
+          `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${
+            import.meta.env.VITE_WEATHER_API_KEY
+          }`
+        );
+        console.log(response);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setSearchResult([...data]);
+        }
+      } catch (e) {
+        console.log(e.message);
       }
     }
     fetchSearchData();
