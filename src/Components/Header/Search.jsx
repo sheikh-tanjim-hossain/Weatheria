@@ -1,3 +1,5 @@
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AnimatePresence, motion } from "motion/react";
 import { useContext, useEffect, useState } from "react";
 import { LocationContext } from "../../Context";
@@ -14,12 +16,10 @@ export default function Search() {
 
   const doSearch = useDebounce((searchTerm) => {
     setSearchValue(searchTerm);
-    setSearchLoading(false);
   }, 500);
 
   function handleChange(e) {
     e.preventDefault();
-    setSearchLoading(true);
     setFormValue(e.target.value);
     doSearch(e.target.value);
   }
@@ -77,13 +77,12 @@ export default function Search() {
             className="absolute mt-2 bg-white max-h-[150px] md:max-h-[200px] w-full overflow-y-auto"
           >
             {searchLoading ? (
-              // <div className="flex justify-center items-center h-[100px] md:h-[150px] bg-gray-200">
-              //   <FontAwesomeIcon
-              //     icon={faSpinner}
-              //     className="animate-spin h-8 w-8 md:h-10 md:w-10"
-              //   />
-              // </div>
-              <>loading...</>
+              <div className="flex justify-center items-center h-[100px] md:h-[150px] bg-gray-200">
+                <FontAwesomeIcon
+                  icon={faSpinner}
+                  className="animate-spin h-8 w-8 md:h-10 md:w-10"
+                />
+              </div>
             ) : (
               <>
                 {searchResult.map((item) => (
