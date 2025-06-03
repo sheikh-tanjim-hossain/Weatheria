@@ -58,10 +58,12 @@ export default function Search() {
             placeholder="Search Location"
             required
             onChange={handleChange}
-            onFocus={() => {
+            onFocus={(e) => {
+              e.preventDefault();
               setShowSearch(true);
             }}
-            onBlur={() => {
+            onBlur={(e) => {
+              e.preventDefault();
               setShowSearch(false);
             }}
             value={formValue}
