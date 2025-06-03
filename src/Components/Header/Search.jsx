@@ -25,6 +25,7 @@ export default function Search() {
   }
 
   useEffect(() => {
+    console.log("calling use Effect");
     setSearchLoading(true);
     async function fetchSearchData() {
       const response = await fetch(
@@ -32,15 +33,15 @@ export default function Search() {
           import.meta.env.VITE_WEATHER_API_KEY
         }`
       );
-
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
-
+        console.log(data);
         setSearchResult([...data]);
       }
-      setSearchLoading(false);
     }
     fetchSearchData();
+    setSearchLoading(false);
   }, [searchValue]);
 
   return (
