@@ -30,7 +30,7 @@ export default function Search() {
     async function fetchSearchData() {
       try {
         const response = await fetch(
-          `http://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${
+          `https://api.openweathermap.org/geo/1.0/direct?q=${searchValue}&limit=5&appid=${
             import.meta.env.VITE_WEATHER_API_KEY
           }`
         );
