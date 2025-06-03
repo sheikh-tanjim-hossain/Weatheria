@@ -71,7 +71,6 @@ export default function Page() {
               newestOnTop={true}
               closeOnClick={false}
               rtl={false}
-              pauseOnFocusLoss
               theme="light"
             />
             <section>
